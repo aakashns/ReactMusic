@@ -8,6 +8,7 @@
   "dependencies": {
     "react": "^15.0.2",
     "react-native": "^0.26.1",
-    "react-native-slider": "^0.7.1"
+    "react-native-slider": "^0.7.1",
+    "react-native-video": "^0.8.0-rc"
   }
 }
