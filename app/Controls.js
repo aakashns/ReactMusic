@@ -16,12 +16,13 @@ const Controls = ({
   onPressPause,
   onBack,
   onForward,
-  onShuffle,
-  onRepeat,
+  onPressShuffle,
+  onPressRepeat,
+  forwardDisabled,
 }) => (
   <View style={styles.container}>
-    <TouchableOpacity onPress={onShuffle}>
-      <Image style={styles.secondaryControl}
+    <TouchableOpacity activeOpacity={0.0} onPress={onPressShuffle}>
+      <Image style={[styles.secondaryControl, shuffleOn ? [] : styles.off]}
         source={require('../img/ic_shuffle_white.png')}/>
     </TouchableOpacity>
     <View style={{width: 40}} />
@@ -42,12 +43,14 @@ const Controls = ({
       </TouchableOpacity>
     }
     <View style={{width: 20}} />
-    <TouchableOpacity onPress={onForward}>
-      <Image source={require('../img/ic_skip_next_white_36pt.png')}/>
+    <TouchableOpacity onPress={onForward}
+      disabled={forwardDisabled}>
+      <Image style={[forwardDisabled && {opacity: 0.3}]}
+        source={require('../img/ic_skip_next_white_36pt.png')}/>
     </TouchableOpacity>
     <View style={{width: 40}} />
-    <TouchableOpacity onPress={onRepeat}>
-      <Image style={styles.secondaryControl}
+    <TouchableOpacity activeOpacity={0.0} onPress={onPressRepeat}>
+      <Image style={[styles.secondaryControl, repeatOn ? [] : styles.off]}
         source={require('../img/ic_repeat_white.png')}/>
     </TouchableOpacity>
   </View>
@@ -60,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 10,
+    paddingTop: 8,
   },
   playButton: {
     height: 72,
@@ -72,8 +75,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   secondaryControl: {
-    opacity: 0.72,
     height: 18,
     width: 18,
+  },
+  off: {
+    opacity: 0.30,
   }
 })
