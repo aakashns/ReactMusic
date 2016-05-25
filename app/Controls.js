@@ -12,8 +12,8 @@ const Controls = ({
   paused,
   shuffleOn,
   repeatOn,
-  onPlay,
-  onPause,
+  onPressPlay,
+  onPressPause,
   onBack,
   onForward,
   onShuffle,
@@ -29,13 +29,13 @@ const Controls = ({
       <Image source={require('../img/ic_skip_previous_white_36pt.png')}/>
     </TouchableOpacity>
     <View style={{width: 20}} />
-    {paused ?
-      <TouchableOpacity onPress={onPause}>
+    {!paused ?
+      <TouchableOpacity onPress={onPressPause}>
         <View style={styles.playButton}>
           <Image source={require('../img/ic_pause_white_48pt.png')}/>
         </View>
       </TouchableOpacity> :
-      <TouchableOpacity onPress={onPlay}>
+      <TouchableOpacity onPress={onPressPlay}>
         <View style={styles.playButton}>
           <Image source={require('../img/ic_play_arrow_white_48pt.png')}/>
         </View>
